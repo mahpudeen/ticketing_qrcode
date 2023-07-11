@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { View, Button, Text, StyleSheet, Image } from 'react-native';
 import LogoutConfirmationModal from './LogoutConfirmationModal';
 import Logo from '../../../assets/images/logo.jpg';
+import { useNavigation } from '@react-navigation/native';
 
 const LogoutScreen = ({ onLogout }) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const navigation = useNavigation();
 
   const handleLogout = () => {
     // Show the confirmation modal
@@ -14,13 +16,14 @@ const LogoutScreen = ({ onLogout }) => {
   const handleConfirmLogout = () => {
     // Perform logout actions
     setModalVisible(false);
-    onLogout();
+    navigation.navigate('Login');
   };
 
   const handleCancelLogout = () => {
     // Cancel logout
     setModalVisible(false);
   };
+
 
   return (
     <View style={styles.container}>
